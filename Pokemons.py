@@ -1,7 +1,7 @@
 pokemons = {
-    "pikachu": {"tipo": "electrico", "nivel": 10},
-    "charmander": {"tipo": "fuego", "nivel": 8},
-    "raichu": {"tipo": "electrico", "nivel": 20},
+    "pikachu": {"Type": "electrico", "Level": 10},
+    "charmander": {"Type": "fuego", "Level": 8},
+    "raichu": {"Type": "electrico", "Level": 20},
 }
 
 
@@ -32,16 +32,24 @@ def Pokedex():
                 registerPokemon()
 
             elif n == 5:
-                print("saliendo del sistema")
+                print("Exiting the system.")
                 break
             else:
-                print("Elije una de las opciones")
+                print("Choose one of the options.")
         except ValueError:
-            print("Tiene que ser un numero entero ")
+            print("It must be a whole number. ")
 
 
 def searchPokemon():
-    print("--- SEARCHING POKEMONS ---")
+    # Pokémon search function
+    print("--- Pokémon Finder ---")
+    i = input("\n Which Pokémon do you want to look for?" "\n- ").lower().strip()
+    if i in pokemons:
+        print("--- POKEMON FOUND --- ", f"\n{i} ")
+        for j in pokemons[i]:
+            print(f"{j}:", pokemons[i][j])
+    else:
+        print("That Pokémon was not found.")
 
 
 def types():
@@ -54,3 +62,11 @@ def backpack():
 
 def registerPokemon():
     print("--- SEARCHING TYPES ---")
+
+
+def main():
+    Pokedex()
+
+
+if __name__ == "__main__":
+    main()
