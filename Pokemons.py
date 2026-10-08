@@ -1,7 +1,7 @@
 pokemons = {
-    "pikachu": {"Type": "electrico", "Level": 10},
-    "charmander": {"Type": "fuego", "Level": 8},
-    "raichu": {"Type": "electrico", "Level": 20},
+    "pikachu": {"Type": "electric", "Level": 10},
+    "charmander": {"Type": "fire", "Level": 8},
+    "raichu": {"Type": "electric", "Level": 20},
 }
 
 
@@ -53,7 +53,19 @@ def searchPokemon():
 
 
 def types():
-    print("--- SEARCHING TYPES ---")
+    # funcion de tipos
+    found = False
+    type = input("What type of Pokémon are you looking for?" "\n- ").lower().strip()
+    for i in pokemons:
+        if type == pokemons[i]["Type"]:
+            if not found:
+                print("--- POKEMONS FOUND ---")
+            found = True
+            print(i)
+
+    # in case the Pokémon type has not been found
+    if not found:
+        print("--- POKEMONS NOT FOUND ---")
 
 
 def backpack():
