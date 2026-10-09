@@ -1,7 +1,7 @@
 pokemons = {
-    "pikachu": {"Type": "electric", "Level": 10},
-    "charmander": {"Type": "fire", "Level": 8},
-    "raichu": {"Type": "electric", "Level": 20},
+    "pikachu": {"type": "electric", "level": 10},
+    "charmander": {"type": "fire", "level": 8},
+    "raichu": {"type": "electric", "level": 20},
 }
 
 bag = {"pocion": 3, "pokeball": 5, "superpocion": 2}
@@ -23,15 +23,15 @@ def Pokedex():
             )
 
             if n == 1:
-                searchPokemon()
+                search_pokemon()
             elif n == 2:
-                types()
+                pokemon_type()
 
             elif n == 3:
                 backpack()
 
             elif n == 4:
-                registerPokemon()
+                pokemon_register()
 
             elif n == 5:
                 print("Exiting the system.")
@@ -39,22 +39,22 @@ def Pokedex():
             else:
                 print("Choose one of the options.")
         except ValueError:
-            print("It must be a whole number. ")
+            print("It must be a whole number.")
 
 
-def searchPokemon():
+def search_pokemon():
     # Pokémon search function
     print("--- Pokémon Finder ---")
-    i = input("\n Which Pokémon do you want to look for?" "\n- ").lower().strip()
-    if i in pokemons:
-        print("--- POKEMON FOUND --- ", f"\n{i} ")
-        for j in pokemons[i]:
-            print(f"{j}:", pokemons[i][j])
+    search = input("\n Which Pokémon do you want to look for?" "\n- ").lower().strip()
+    if search in pokemons:
+        print("--- POKEMON FOUND --- ", f"\n{search} ")
+        for value in pokemons[search]:
+            print(f"{value}:", pokemons[search][value])
     else:
         print("That Pokémon was not found.")
 
 
-def types():
+def pokemon_type():
     # funcion de tipos
     found = False
     type = input("What type of Pokémon are you looking for?" "\n- ").lower().strip()
@@ -79,15 +79,32 @@ def backpack():
         print("There are no items in the backpack.")
 
 
-def registerPokemon():
+def pokemon_register():
     print("--- REGISTER NEW POKEMON ---")
-    new = input("nombre del nuevo pokemon").lower().strip()
-    if new in pokemons:
-        print("ya existe ese pokemon")
-
-    type = input("cual es su tipo")
-
-    nivel = int(input("cual es su nivel"))
+    while True:
+        name = input("Name of the new Pokémon" "\n- ").lower().strip()
+        if name in pokemons:
+            print("This Pokémon is already registered.")
+            continue
+        elif name == "":
+            print("Enter a name.")
+            continue
+        while True:
+            type = input("What type is the Pokémon?" "\n- ").lower().strip()
+            if type == "":
+                print("Enter the Pokémon type.")
+                continue
+            break
+        while True:
+            try:
+                level = int(input("What is the Pokémon's level?" "\n- "))
+            except ValueError:
+                print("It must be a whole number.")
+                continue
+            break
+        break
+    pokemons[name] = {"type": type, "level": level}
+    print("Pokemon registered successfully")
 
 
 def main():
