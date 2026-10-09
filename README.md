@@ -1,2 +1,2 @@
 # Proyecto-Pokemons
-Aplicación de consola en Python para buscar y gestionar información de Pokémon.
+Python console application to search for and manage Pokémon information.
