@@ -4,6 +4,8 @@ pokemons = {
     "raichu": {"Type": "electric", "Level": 20},
 }
 
+bag = {"pocion": 3, "pokeball": 5, "superpocion": 2}
+
 
 def Pokedex():
     # menu de inicio
@@ -69,11 +71,23 @@ def types():
 
 
 def backpack():
-    print("--- SEARCHING BACKPACK ---")
+    print("--- ACCESSING THE BACKPACK ---")
+    if bag:
+        for i in bag:
+            print(f"{i}:", bag[i])
+    else:
+        print("There are no items in the backpack.")
 
 
 def registerPokemon():
-    print("--- SEARCHING TYPES ---")
+    print("--- REGISTER NEW POKEMON ---")
+    new = input("nombre del nuevo pokemon").lower().strip()
+    if new in pokemons:
+        print("ya existe ese pokemon")
+
+    type = input("cual es su tipo")
+
+    nivel = int(input("cual es su nivel"))
 
 
 def main():
